@@ -1,67 +1,92 @@
 /** SPACE INVADERS MONSTERS CONTROL **/
-const start_x = 400;
-
-var m1_x = start_x + 1;
-var m1_y = 0;
-var m2_x = start_x + 390;
-var m2_y = 0;
-var m3_x = start_x + (390 * 2);
-var m3_y = 0;
-var dx = 1;
-var dy = 0;
-
 var image01_01 = new Image(canvas);
 image01_01.src = 'assets/img/01_01.svg';
-image01_01.width = 390;
-image01_01.height = 230;
+image01_01.width = 100;
+image01_01.height = 60;
 
-console.log(image01_01.width);
+var m01_positions = [];
+
+function m01(x) {
+    this.image01 = image01_01;
+    this.x = x;
+    this.y = 0;
+};
+
+var cant_monsters = 10;
+
+var first_time_m = true;
+var seccond_time_m = false;
+const start_x_m = canvas.width / 2;
+
+// var m1_x = start_x + 1;
+// var m1_y = 0;
+// var m2_x = start_x + image01_01.width;
+// var m2_y = 0;
+// var m3_x = start_x + (image01_01.width * 2);
+// var m3_y = 0;
+var dx_m = 1;
 
 
 function print_monsters() {
-    if (m3_x + image01_01.width == canvas.width) {
-        dx = -1;
-        m1_y = m1_y + 50;
-        m2_y = m2_y + 50;
-        m3_y = m3_y + 50;
-    } else if (m1_x == 0) {
-        dx = 1;
-        m1_y = m1_y + 50;
-        m2_y = m2_y + 50;
-        m3_y = m3_y + 50;
-    } else if (m1_y + image01_01.height >= canvas.height) {
-        alert("DERROTA")
+    if (first_time_m) {
+        first_time_m = false;
+        print_monsters01_f();
+    } else if (seccond_time_m) {
+        check();
+        print_monster01();
     }
-    print_monster01();
-    print_monster02();
-    print_monster03();
 
-    // console.log(x)
 }
 
+function print_monsters01_f() {
+    let posicion = (canvas.width / 2) - ((cant_monsters * (image01_01.width + 20)) / 2);
+
+    let posicion_first = posicion;
+    // console.log(posicion);
+
+    for (let i = 0; i < cant_monsters; i++) {
+        // console.log(posicion);
+        m01_positions[i] = new m01(posicion);
+
+        ctx.drawImage(m01_positions[i].image01, m01_positions[i].x, m01_positions[i].y);
+
+        // console.log(posicion);
+        // console.log(posicion_first + (cant_monsters * m01.image01.width) - m01.image01.width);
+        if (posicion == (posicion_first + (cant_monsters * (image01_01.width + 20)) - (image01_01.width + 20))) {
+            seccond_time_m = true;
+            console.log("entra")
+        }
+
+        posicion = posicion + image01_01.width + 20;
+    }
+    console.log(m01_positions[3].x);
+    console.log(m01_positions);
+}
 
 function print_monster01() {
+    for (let i = 0; i < m01_positions.length; i++) {
 
-    ctx.drawImage(image01_01, m1_x, m1_y);
+        ctx.drawImage(m01_positions[i].image01, m01_positions[i].x, m01_positions[i].y);
 
-    m1_x += dx;
-    m1_y += dy;
+        m01_positions[i].x += dx_m;
+    }
 }
 
-function print_monster02() {
-    ctx.drawImage(image01_01, m2_x, m2_y);
-
-    m2_x += dx;
-    m2_y += dy;
+function check() {
+    if (m01_positions[m01_positions.length - 1].x + image01_01.width == canvas.width) {
+        dx_m = -1;
+        baja(50);
+    } else if (m01_positions[0].x == 0) {
+        dx_m = 1;
+        baja(50);
+    } else if (m01_positions[m01_positions.length - 1].y >= n_y) {
+        alert("DERROTA")
+    }
 }
 
-function print_monster03() {
+function baja(cant) {
+    for (let i = 0; i < m01_positions.length; i++) {
 
-    ctx.drawImage(image01_01, m3_x, m3_y);
-
-    m3_x += dx;
-    m3_y += dy;
+        m01_positions[i].y += cant;
+    }
 }
-
-
-// print_monsters();
