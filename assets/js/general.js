@@ -1,24 +1,13 @@
 /** SPACE INVADERS **/
-function getKeyAndMove(e) {
-    var key_code = e.which || e.keyCode;
-    switch (key_code) {
-        case 37: //left arrow key
-            // moveLeft();
-            break;
-        case 38: //Up arrow key
-            // moveUp();
-            break;
-        case 39: //right arrow key
-            // moveRight();
-            break;
-        case 40: //down arrow key
-            // moveDown();
-            break;
-        case 32: //Spacebar
+const canvas = document.getElementById("principal");
+const ctx = canvas.getContext('2d');
+canvas.width = 1920;
+canvas.height = 1080;
 
-            break;
-        case 13: //Enter
-
-            break;
-    }
+function printAll() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    print_monsters();
+    print_nave();
 }
+
+setInterval(printAll, 10);
