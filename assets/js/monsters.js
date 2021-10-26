@@ -74,10 +74,22 @@ function print_monsters() {
     if (count_seccond == 100) {
         count_seccond = 0;
 
+        disparo1 = parseInt(Math.random() * (m01_positions.length - 0) + 0);
+        if (m01_positions.length > 0) {
+            enemy_shot(m01_positions[disparo1], 5);
+        }
+        disparo2 = parseInt(Math.random() * (m02_positions.length - 0) + 0);
+        disparo3 = parseInt(Math.random() * (m03_positions.length - 0) + 0);
+        if (m03_positions.length > 0) {
+            enemy_shot(m03_positions[disparo3], 5);
+        }
         for (let i = 0; i < m02_positions.length; i++) {
 
             if (m02_positions[i].image.src === image02_01.src) {
                 m02_positions[i].image = image02_02;
+                if (disparo2 == i) {
+                    enemy_shot(m02_positions[i], 5);
+                }
             } else {
                 m02_positions[i].image = image02_01;
             }
@@ -200,6 +212,7 @@ function check() {
             }
         } else if (m01_positions[m01_positions.length - 1].y >= n_y) {
             alert("DERROTA")
+            location.reload();
             baja(-m01_positions[m01_positions.length - 1].y)
         }
     }
@@ -220,6 +233,7 @@ function check() {
             }
         } else if (m02_positions[m02_positions.length - 1].y >= n_y) {
             alert("DERROTA")
+            location.reload();
             baja(-m01_positions[m01_positions.length - 1].y)
         }
     }
@@ -240,22 +254,15 @@ function check() {
             }
         } else if (m03_positions[m03_positions.length - 1].y >= n_y) {
             alert("DERROTA")
+            location.reload();
             baja(-m01_positions[m01_positions.length - 1].y)
         }
     }
 
     if (check_win) {
-        console.log("You win");
+        alert("You win");
+        location.reload();
     }
-
-    // if (m01_positions[m01_positions.length - 1].x + image01_01.width == canvas.width) {} else if (m01_positions[0].x == 0) {
-    //     dx_m = 1;
-    //     baja(50);
-    // }
-    /*else if (m03_positions[m03_positions.length - 1].y >= n_y) {
-           alert("DERROTA")
-           baja(-m01_positions[m01_positions.length - 1].y)
-       }*/
 }
 
 function baja(cant) {
