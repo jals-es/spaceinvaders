@@ -181,16 +181,81 @@ function print_monster03() {
 }
 
 function check() {
-    if (m01_positions[m01_positions.length - 1].x + image01_01.width == canvas.width) {
-        dx_m = -1;
-        baja(50);
-    } else if (m01_positions[0].x == 0) {
-        dx_m = 1;
-        baja(50);
-    } else if (m03_positions[m03_positions.length - 1].y >= n_y) {
-        alert("DERROTA")
-        baja(-m01_positions[m01_positions.length - 1].y)
+    check_baja = true;
+    check_win = true;
+
+    if (m01_positions.length > 0) {
+        check_win = false;
+        if (m01_positions[m01_positions.length - 1].x + image01_01.width == canvas.width) {
+            dx_m = -1;
+            if (check_baja) {
+                baja(50);
+                check_baja = false;
+            }
+        } else if (m01_positions[0].x == 0) {
+            dx_m = 1;
+            if (check_baja) {
+                baja(50);
+                check_baja = false;
+            }
+        } else if (m01_positions[m01_positions.length - 1].y >= n_y) {
+            alert("DERROTA")
+            baja(-m01_positions[m01_positions.length - 1].y)
+        }
     }
+
+    if (m02_positions.length > 0) {
+        check_win = false;
+        if (m02_positions[m02_positions.length - 1].x + image02_01.width == canvas.width) {
+            dx_m = -1;
+            if (check_baja) {
+                baja(50);
+                check_baja = false;
+            }
+        } else if (m02_positions[0].x == 0) {
+            dx_m = 1;
+            if (check_baja) {
+                baja(50);
+                check_baja = false;
+            }
+        } else if (m02_positions[m02_positions.length - 1].y >= n_y) {
+            alert("DERROTA")
+            baja(-m01_positions[m01_positions.length - 1].y)
+        }
+    }
+
+    if (m03_positions.length > 0) {
+        check_win = false;
+        if (m03_positions[m03_positions.length - 1].x + image03_01.width == canvas.width) {
+            dx_m = -1;
+            if (check_baja) {
+                baja(50);
+                check_baja = false;
+            }
+        } else if (m03_positions[0].x == 0) {
+            dx_m = 1;
+            if (check_baja) {
+                baja(50);
+                check_baja = false;
+            }
+        } else if (m03_positions[m03_positions.length - 1].y >= n_y) {
+            alert("DERROTA")
+            baja(-m01_positions[m01_positions.length - 1].y)
+        }
+    }
+
+    if (check_win) {
+        console.log("You win");
+    }
+
+    // if (m01_positions[m01_positions.length - 1].x + image01_01.width == canvas.width) {} else if (m01_positions[0].x == 0) {
+    //     dx_m = 1;
+    //     baja(50);
+    // }
+    /*else if (m03_positions[m03_positions.length - 1].y >= n_y) {
+           alert("DERROTA")
+           baja(-m01_positions[m01_positions.length - 1].y)
+       }*/
 }
 
 function baja(cant) {
