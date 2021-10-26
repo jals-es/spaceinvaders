@@ -32,6 +32,18 @@ function check_shot(shot) {
             break;
         }
     }
+    for (let index = 0; index < m02_positions.length; index++) {
+        if (isBetween(shot,m02_positions[index])) {
+            m02_positions.splice(index,1);
+            break;
+        }
+    }
+    for (let index = 0; index < m03_positions.length; index++) {
+        if (isBetween(shot,m03_positions[index])) {
+            m03_positions.splice(index,1);
+            break;
+        }
+    }
 }
 function s_moveUp(){
     if (shots.length == 0){
@@ -41,12 +53,11 @@ function s_moveUp(){
 function isBetween(shot,monster) {
 
     monsterxstart = monster.x
-    monsterxfinal = monster.x + monster.image01.width
+    monsterxfinal = monster.x + monster.image.width
 
     monsterystart = monster.y
-    monsteryfinal = monster.y + monster.image01.height
+    monsteryfinal = monster.y + monster.image.height
 
-    // console.log(monsterystart +" - "+ monsteryfinal + "|||" + shot.x);
     if (monsterxstart < shot.s_x && shot.s_x < monsterxfinal) {
         if (monsterystart < shot.s_y && shot.s_y < monsteryfinal) {
             console.log("Y: M-Start: "+monsterystart+" M-Final: "+monsteryfinal + " Shot Y: "+ shot.s_y);
