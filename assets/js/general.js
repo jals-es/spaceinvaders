@@ -21,10 +21,10 @@ onkeydown = onkeyup = function (e) {
 }
 
 function check_key() {
-    if (map[68]) {
+    if (map[39]) {
         n_moveRight()
     }
-    if (map[65]) {
+    if (map[37]) {
         n_moveLeft()
     }
 
