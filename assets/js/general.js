@@ -32,6 +32,21 @@ function getKeyAndMove(e) {
             // moveDown();
             break;
         case 32: //Spacebar
+            // s_moveUp();
+
+
+            break;
+        case 13: //Enter
+            break;
+    }
+} 
+function getShot(e) {
+    // console.log(e);
+
+    var key_code = e.which || e.keyCode;
+    // console.log(key_code);
+    switch (key_code) {
+        case 32: //Spacebar
             s_moveUp();
 
 
