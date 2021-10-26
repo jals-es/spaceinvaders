@@ -5,7 +5,7 @@ image_nave.width = 140;
 image_nave.height = 85;
 var n_x = (canvas.width/2)-(image_nave.width/2);
 var n_y = (canvas.height-image_nave.height)-(canvas.height*0.03);
-var nd_x = 15;
+var nd_x = 5;
 var nd_y = 0;
 function print_nave(){
     // console.log(n_x);

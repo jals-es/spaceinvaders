@@ -1,4 +1,7 @@
 /** SPACE INVADERS **/
+
+vida = 3
+
 function Shot(dir,s_x = n_x+(image_nave.width/2)-10,s_y=n_y) {
     this.s_x = s_x;
     this.s_y = s_y-image_shot.height+10;
@@ -41,7 +44,11 @@ function move_shot(shot) {
 }
 function check_enemyshot(shot) {
     if (isBetween(shot)) {
-        alert("lose")
+        vida=vida-1
+        if (vida == 0) {
+            alert("lose")    
+        }
+        console.log("MENOS UNA VIDA");
     }
 }
 function enemy_shot(monster,vel) {
