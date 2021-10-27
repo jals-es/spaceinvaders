@@ -19,11 +19,18 @@ function print_score() {
     ctx.font = "50px DotsAllForNow";
     vidas = "";
 
+    ctx.fillStyle = "red";
+
     for (let i = 0; i < vida; i++) {
         vidas += "\u2764";
     }
 
-    ctx.fillText(vidas + " Score: " + score + "", 10, 50);
+    ctx.fillText(vidas, 10, 50);
+
+
+    ctx.fillStyle = "black";
+
+    ctx.fillText("Score: " + score, 170, 50);
 }
 
 setInterval(printAll, 10);

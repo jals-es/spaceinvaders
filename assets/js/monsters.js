@@ -39,7 +39,7 @@ function monster(x, y, image) {
 var first_time_m = true;
 var seccond_time_m = false;
 const start_x_m = canvas.width / 2;
-const start_y_m = 50;
+const start_y_m = 70;
 
 var dx_m = 1;
 
