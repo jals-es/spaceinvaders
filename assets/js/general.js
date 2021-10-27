@@ -1,11 +1,11 @@
 /** SPACE INVADERS **/
 const canvas = document.getElementById("principal");
 const ctx = canvas.getContext('2d');
-ctx.font = "1000px DotsAllForNow";
 canvas.width = screen.width;
 canvas.height = screen.height;
 
 var score = 0;
+var vidas = "";
 
 function printAll() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -16,7 +16,14 @@ function printAll() {
 }
 
 function print_score() {
-    ctx.fillText("Score: " + score, 10, 20);
+    ctx.font = "50px DotsAllForNow";
+    vidas = "";
+
+    for (let i = 0; i < vida; i++) {
+        vidas += "\u2764";
+    }
+
+    ctx.fillText(vidas + " Score: " + score + "", 10, 50);
 }
 
 setInterval(printAll, 10);
