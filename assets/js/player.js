@@ -1,8 +1,8 @@
 /** SPACE INVADERS **/
 var image_nave = new Image(canvas);
 image_nave.src = 'assets/img/navesvg.svg';
-image_nave.width = 140;
-image_nave.height = 85;
+image_nave.width = 110;
+image_nave.height = 120;
 var n_x = (canvas.width/2)-(image_nave.width/2);
 var n_y = (canvas.height-image_nave.height)-(canvas.height*0.03);
 var nd_x = 5;
