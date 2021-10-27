@@ -1,9 +1,15 @@
 /** SPACE INVADERS **/
 
+@font-face {
+    font-family: 'DotsAllForNow';
+    src: url('assets/fonts/DotsAllForNow.ttf');
+}
+
 #principal {
     width: 100%;
     height: 97vh;
 }
+
 body {
     margin: 0px;
 }

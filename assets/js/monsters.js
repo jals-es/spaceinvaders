@@ -36,21 +36,10 @@ function monster(x, y, image) {
     this.y = y;
 };
 
-// function m02(x) {
-//     this.image02 = image02_01;
-//     this.x = x;
-//     this.y = image01_01.height + margin_m;
-// };
-
-// function m03(x) {
-//     this.image03 = image03_01;
-//     this.x = x;
-//     this.y = image01_01.height + image02_01.height + margin_m;
-// };
-
 var first_time_m = true;
 var seccond_time_m = false;
 const start_x_m = canvas.width / 2;
+const start_y_m = 50;
 
 var dx_m = 1;
 
@@ -76,19 +65,19 @@ function print_monsters() {
 
         disparo1 = parseInt(Math.random() * (m01_positions.length - 0) + 0);
         if (m01_positions.length > 0) {
-            enemy_shot(m01_positions[disparo1], 5);
+            enemy_shot(m01_positions[disparo1], parseInt(Math.random() * (15 - 5) + 5));
         }
         disparo2 = parseInt(Math.random() * (m02_positions.length - 0) + 0);
         disparo3 = parseInt(Math.random() * (m03_positions.length - 0) + 0);
         if (m03_positions.length > 0) {
-            enemy_shot(m03_positions[disparo3], 5);
+            enemy_shot(m03_positions[disparo3], parseInt(Math.random() * (15 - 5) + 5));
         }
         for (let i = 0; i < m02_positions.length; i++) {
 
             if (m02_positions[i].image.src === image02_01.src) {
                 m02_positions[i].image = image02_02;
                 if (disparo2 == i) {
-                    enemy_shot(m02_positions[i], 5);
+                    enemy_shot(m02_positions[i], parseInt(Math.random() * (15 - 5) + 5));
                 }
             } else {
                 m02_positions[i].image = image02_01;
@@ -122,7 +111,7 @@ function print_monsters() {
 
 function print_monsters01_f() {
     let posicion = (canvas.width / 2) - ((cant_monsters * (image01_01.width + margin_m)) / 2);
-    let posicion_y = 0;
+    let posicion_y = start_y_m;
 
     let posicion_first = posicion;
 
@@ -141,7 +130,7 @@ function print_monsters01_f() {
 
 function print_monsters02_f() {
     let posicion = (canvas.width / 2) - ((cant_monsters * (image02_01.width + margin_m)) / 2);
-    let posicion_y = image01_01.height + margin_m;
+    let posicion_y = start_y_m + image01_01.height + margin_m;
 
     for (let i = 0; i < cant_monsters; i++) {
         m02_positions[i] = new monster(posicion, posicion_y, image02_01);
@@ -154,7 +143,7 @@ function print_monsters02_f() {
 
 function print_monsters03_f() {
     let posicion = (canvas.width / 2) - ((cant_monsters * (image03_01.width + margin_m)) / 2);
-    let posicion_y = image01_01.height + margin_m + image02_01.height + margin_m;
+    let posicion_y = start_y_m + image01_01.height + margin_m + image02_01.height + margin_m;
 
     for (let i = 0; i < cant_monsters; i++) {
         m03_positions[i] = new monster(posicion, posicion_y, image03_01);
