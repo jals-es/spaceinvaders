@@ -9,6 +9,7 @@ var vidas = "";
 
 function printAll() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = "50px DotsAllForNow";
     print_score();
     print_monsters();
     print_nave();
@@ -16,7 +17,6 @@ function printAll() {
 }
 
 function print_score() {
-    ctx.font = "50px DotsAllForNow";
     vidas = "";
 
     ctx.fillStyle = "red";
