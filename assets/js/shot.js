@@ -11,12 +11,23 @@ function Shot(dir, s_x = n_x + (image_nave.width / 2) - 10, s_y = n_y) {
 }
 var shots = []
 var enemy_shots = []
+var bangs = []
 var image_shot = new Image(canvas);
+var image_boom = new Image(canvas)
 image_shot.src = 'assets/img/shotsvg.svg';
 image_shot.width = 5;
 image_shot.height = 20;
+image_boom.src = 'assets/img/Bang.svg'
 
 function print_shot() {
+    for (let index = 0; index < bangs.length; index++) {
+        // console.log("asdasd");
+        if (bangs[index].time > 0) {
+            // console.log("asda");
+            ctx.drawImage(image_boom, bangs[index].x, bangs[index].y)
+            bangs[index].time = bangs[index].time - 1
+        }
+    }
     for (let index = 0; index < shots.length; index++) {
         if (shots[index].s_y < 0) {
             shots.splice(index, 1)
@@ -36,7 +47,9 @@ function print_shot() {
 function move_enemyshot(shot) {
     shot.s_y = shot.s_y - shot.sd_y
     if (shot.y < canvas.height) {
-        var elementPos = enemy_shots.map(function(x) { return x.uuid; }).indexOf(shot.uuid);
+        var elementPos = enemy_shots.map(function (x) {
+            return x.uuid;
+        }).indexOf(shot.uuid);
         enemy_shots.splice(elementPos, 1)
     } else {
         check_enemyshot(shot);
@@ -58,7 +71,9 @@ function check_enemyshot(shot) {
         n_x = (canvas.width / 2) - (image_nave.width / 2);
         n_y = (canvas.height - image_nave.height) - (canvas.height * 0.03);
         console.log(enemy_shots)
-        var elementPos = enemy_shots.map(function(x) { return x.uuid; }).indexOf(shot.uuid);
+        var elementPos = enemy_shots.map(function (x) {
+            return x.uuid;
+        }).indexOf(shot.uuid);
         enemy_shots.splice(elementPos, 1)
         console.log(enemy_shots)
 
@@ -78,6 +93,11 @@ function enemy_shot(monster, vel) {
 function check_shot(shot) {
     for (let index = 0; index < m01_positions.length; index++) {
         if (isBetween(shot, m01_positions[index])) {
+            bangs.push({
+                x: m01_positions[index].x,
+                y: m01_positions[index].y,
+                time: 10
+            })
             m01_positions.splice(index, 1);
             score += 100;
             break;
@@ -85,6 +105,12 @@ function check_shot(shot) {
     }
     for (let index = 0; index < m02_positions.length; index++) {
         if (isBetween(shot, m02_positions[index])) {
+            bangs.push({
+                x: m02_positions[index].x,
+                y: m02_positions[index].y,
+                time: 10
+            })
+
             m02_positions.splice(index, 1);
             score += 50;
             break;
@@ -92,6 +118,11 @@ function check_shot(shot) {
     }
     for (let index = 0; index < m03_positions.length; index++) {
         if (isBetween(shot, m03_positions[index])) {
+            bangs.push({
+                x: m03_positions[index].x,
+                y: m03_positions[index].y,
+                time: 10
+            })
             m03_positions.splice(index, 1);
             score += 25;
             break;
