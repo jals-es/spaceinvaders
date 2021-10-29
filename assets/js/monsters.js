@@ -60,7 +60,8 @@ var boss_show = false;
 var boss = new Boss((canvas.width / 2) - (image_boss.width / 2), start_y_m, image_boss);
 var dx_b = Math.random() < 0.5 ? -1 : 1;;
 var dy_b = 1;
-var live_boss = 1000;
+var live_boss = 20;
+var full_live_boss = live_boss;
 
 function print_monsters() {
     if (!boss_show) {
@@ -137,8 +138,23 @@ function matar_all() {
 }
 
 function print_boss() {
+
+    ctx.strokeStyle = "red";
+    ctx.beginPath();
+
+    boss_bar = (500 * live_boss) / full_live_boss;
+
+    ctx.fillStyle = "black";
+    ctx.fillRect((canvas.width / 2) - 255, 5, 510, 60);
+    ctx.stroke();
+
     ctx.fillStyle = "red";
-    ctx.fillText(live_boss, (canvas.width / 2) - 100, 50);
+    ctx.fillRect((canvas.width / 2) - 250, 10, boss_bar, 50);
+    ctx.stroke();
+
+    if (boss_bar <= 0) {
+        alert("YOU WIN");
+    }
 
     ctx.drawImage(boss.image, boss.x, boss.y);
 
@@ -152,6 +168,8 @@ function check_boss_position() {
 
     var h = Math.random() < 0.5 ? -1 : 1;
     rand_vel = (Math.random() * (2 - 1) + 1);
+
+    // console.log(dx_b + " -- " + dy_b);
 
     if (boss.x < 0) {
         dx_b = dx_b * -1;
@@ -175,6 +193,18 @@ function check_boss_position() {
         dy_b = dy_b * -1;
 
         dx_b = (dx_b * rand_vel) * h;
+    }
+
+    if (dx_b > 10) {
+        dx_b = 10;
+    } else if (dx_b < -10) {
+        dx_b = -10;
+    }
+
+    if (dy_b > 10) {
+        dy_b = 10;
+    } else if (dy_b < -10) {
+        dy_b = -10;
     }
 }
 
