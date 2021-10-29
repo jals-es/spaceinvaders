@@ -91,41 +91,48 @@ function enemy_shot(monster, vel) {
 }
 
 function check_shot(shot) {
-    for (let index = 0; index < m01_positions.length; index++) {
-        if (isBetween(shot, m01_positions[index])) {
-            bangs.push({
-                x: m01_positions[index].x,
-                y: m01_positions[index].y,
-                time: 10
-            })
-            m01_positions.splice(index, 1);
-            score += 100;
-            break;
+    if (!boss_show) {
+        for (let index = 0; index < m01_positions.length; index++) {
+            if (isBetween(shot, m01_positions[index])) {
+                bangs.push({
+                    x: m01_positions[index].x,
+                    y: m01_positions[index].y,
+                    time: 10
+                })
+                m01_positions.splice(index, 1);
+                score += 100;
+                break;
+            }
         }
-    }
-    for (let index = 0; index < m02_positions.length; index++) {
-        if (isBetween(shot, m02_positions[index])) {
-            bangs.push({
-                x: m02_positions[index].x,
-                y: m02_positions[index].y,
-                time: 10
-            })
+        for (let index = 0; index < m02_positions.length; index++) {
+            if (isBetween(shot, m02_positions[index])) {
+                bangs.push({
+                    x: m02_positions[index].x,
+                    y: m02_positions[index].y,
+                    time: 10
+                })
 
-            m02_positions.splice(index, 1);
-            score += 50;
-            break;
+                m02_positions.splice(index, 1);
+                score += 50;
+                break;
+            }
         }
-    }
-    for (let index = 0; index < m03_positions.length; index++) {
-        if (isBetween(shot, m03_positions[index])) {
-            bangs.push({
-                x: m03_positions[index].x,
-                y: m03_positions[index].y,
-                time: 10
-            })
-            m03_positions.splice(index, 1);
-            score += 25;
-            break;
+        for (let index = 0; index < m03_positions.length; index++) {
+            if (isBetween(shot, m03_positions[index])) {
+                bangs.push({
+                    x: m03_positions[index].x,
+                    y: m03_positions[index].y,
+                    time: 10
+                })
+                m03_positions.splice(index, 1);
+                score += 25;
+                break;
+            }
+        }
+    } else {
+        if (isBetween(shot,boss)) {
+            shots = []
+            live_boss--
         }
     }
 }
