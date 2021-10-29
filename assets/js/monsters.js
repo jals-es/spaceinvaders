@@ -60,7 +60,7 @@ var boss_show = false;
 var boss = new Boss((canvas.width / 2) - (image_boss.width / 2), start_y_m, image_boss);
 var dx_b = Math.random() < 0.5 ? -1 : 1;;
 var dy_b = 1;
-var live_boss = 20;
+var live_boss = 50;
 var full_live_boss = live_boss;
 
 function print_monsters() {
@@ -139,7 +139,7 @@ function matar_all() {
 
 function print_boss() {
 
-    ctx.strokeStyle = "red";
+    // ctx.strokeStyle = "red";
     ctx.beginPath();
 
     boss_bar = (500 * live_boss) / full_live_boss;
@@ -148,7 +148,15 @@ function print_boss() {
     ctx.fillRect((canvas.width / 2) - 255, 5, 510, 60);
     ctx.stroke();
 
-    ctx.fillStyle = "red";
+    if (boss_bar < (500 / 4)) {
+        ctx.fillStyle = "red";
+    } else if (boss_bar < (500 / 2)) {
+        ctx.fillStyle = "orange";
+    } else if (boss_bar < (500 / 4) * 3) {
+        ctx.fillStyle = "yellow";
+    } else {
+        ctx.fillStyle = "green";
+    }
     ctx.fillRect((canvas.width / 2) - 250, 10, boss_bar, 50);
     ctx.stroke();
 
