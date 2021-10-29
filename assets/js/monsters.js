@@ -79,9 +79,11 @@ function print_monsters() {
         }
 
         if (count_seccond == 100) {
+
             count_seccond = 0;
 
             disparo1 = parseInt(Math.random() * (m01_positions.length - 0) + 0);
+
             if (m01_positions.length > 0) {
                 enemy_shot(m01_positions[disparo1], parseInt(Math.random() * (15 - 5) + 5));
             }
@@ -122,10 +124,23 @@ function print_monsters() {
                 }
 
             }
-            matar_all();
+            // matar_all();
         }
     } else {
+        count_seccond++;
+        // console.log(count_seccond);
         print_boss();
+        if (count_seccond > 65) {
+            count_seccond = 0
+            for (let index = 0; index < (Math.floor(Math.random() * (6 - 3) + 3)); index++) {
+                enemy_shot(boss,parseInt(Math.random() * (15 - 5) + 5),Math.floor(Math.random() * (3 - -3) + -3))
+                
+            }
+            // enemy_shot(boss,parseInt(Math.random() * (15 - 5) + 5),Math.floor(Math.random() * (3 - -3) + -3))
+            // enemy_shot(boss,parseInt(Math.random() * (15 - 5) + 5),Math.floor(Math.random() * (3 - -3) + -3))
+
+        }
+    
     }
 
 }

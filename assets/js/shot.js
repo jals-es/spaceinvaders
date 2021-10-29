@@ -2,10 +2,10 @@
 
 vida = 3
 
-function Shot(dir, s_x = n_x + (image_nave.width / 2) - 10, s_y = n_y) {
+function Shot(dir, s_x = n_x + (image_nave.width / 2) - 10, s_y = n_y, sd_x = 0) {
     this.s_x = s_x;
     this.s_y = s_y - image_shot.height + 10;
-    this.sd_x = dir;
+    this.sd_x = sd_x;
     this.sd_y = dir;
     this.uuid = uuidv4()
 }
@@ -46,6 +46,7 @@ function print_shot() {
 
 function move_enemyshot(shot) {
     shot.s_y = shot.s_y - shot.sd_y
+    shot.s_x = shot.s_x + shot.sd_x 
     if (shot.y < canvas.height) {
         var elementPos = enemy_shots.map(function (x) {
             return x.uuid;
@@ -85,8 +86,9 @@ function check_enemyshot(shot) {
     }
 }
 
-function enemy_shot(monster, vel) {
-    enemy_shots.push(new Shot(-vel, monster.x + (monster.image.width / 2) - 10, monster.y + monster.image.height))
+function enemy_shot(monster, vel, dir, num = 1) {
+
+    enemy_shots.push(new Shot(-vel, monster.x + (monster.image.width / 2) - 10, monster.y + monster.image.height, dir))
 
 }
 
@@ -132,6 +134,7 @@ function check_shot(shot) {
     } else {
         if (isBetween(shot,boss)) {
             shots = []
+            score+=50
             live_boss--
         }
     }
