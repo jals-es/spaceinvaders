@@ -14,6 +14,7 @@ function printAll() {
     print_monsters();
     print_nave();
     print_shot();
+    print_vida();
 }
 
 function print_score() {

@@ -71,7 +71,6 @@ function check_enemyshot(shot) {
         enemy_shots = []
         n_x = (canvas.width / 2) - (image_nave.width / 2);
         n_y = (canvas.height - image_nave.height) - (canvas.height * 0.03);
-        console.log(enemy_shots)
         var elementPos = enemy_shots.map(function (x) {
             return x.uuid;
         }).indexOf(shot.uuid);
@@ -82,7 +81,6 @@ function check_enemyshot(shot) {
         if (vida == 0) {
             alert("lose")
         }
-        console.log("MENOS UNA VIDA");
     }
 }
 
