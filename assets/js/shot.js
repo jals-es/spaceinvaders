@@ -46,9 +46,9 @@ function print_shot() {
 
 function move_enemyshot(shot) {
     shot.s_y = shot.s_y - shot.sd_y
-    shot.s_x = shot.s_x + shot.sd_x 
+    shot.s_x = shot.s_x + shot.sd_x
     if (shot.y < canvas.height) {
-        var elementPos = enemy_shots.map(function (x) {
+        var elementPos = enemy_shots.map(function(x) {
             return x.uuid;
         }).indexOf(shot.uuid);
         enemy_shots.splice(elementPos, 1)
@@ -71,7 +71,7 @@ function check_enemyshot(shot) {
         enemy_shots = []
         n_x = (canvas.width / 2) - (image_nave.width / 2);
         n_y = (canvas.height - image_nave.height) - (canvas.height * 0.03);
-        var elementPos = enemy_shots.map(function (x) {
+        var elementPos = enemy_shots.map(function(x) {
             return x.uuid;
         }).indexOf(shot.uuid);
         enemy_shots.splice(elementPos, 1)
@@ -79,7 +79,8 @@ function check_enemyshot(shot) {
 
         vida = vida - 1
         if (vida == 0) {
-            alert("lose")
+            // alert("lose")
+            screen = 1;
         }
     }
 }
@@ -133,9 +134,9 @@ function check_shot(shot) {
             }
         }
     } else {
-        if (isBetween(shot,boss)) {
+        if (isBetween(shot, boss)) {
             shots = []
-            score+=50
+            score += 50
             live_boss--
         }
     }

@@ -1,27 +1,38 @@
 /** SPACE INVADERS **/
 const canvas = document.getElementById("principal");
 const ctx = canvas.getContext('2d');
-canvas.width = screen.width;
-canvas.height = screen.height;
-// ctx.fillStyle = "blue";
 
+canvas.width = 1920;
+canvas.height = 1080;
+// ctx.fillStyle = "blue";;
 
 var score = 0;
 var vidas = "";
 
+var screen = 0;
+
 function printAll() {
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     ctx.font = "50px DotsAllForNow";
-    print_monsterFalling();
 
-    print_score();
-    print_monsters();
-    print_nave();
-    print_shot();
-    
-    print_vida();
+    switch (screen) {
+
+        case 0:
+            print_monsterFalling();
+            print_score();
+            print_monsters();
+            print_nave();
+            print_shot();
+            print_vida();
+            check_lose()
+            break;
+        case 1:
+            print_lose();
+            break;
+        case 2:
+            print_win();
+            break;
+    }
 }
 
 function print_score() {
@@ -36,7 +47,7 @@ function print_score() {
     ctx.fillText(vidas, 10, 50);
 
 
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
 
     ctx.fillText("Score: " + score, 170, 50);
 }
@@ -58,6 +69,10 @@ function check_key() {
         n_moveLeft()
     }
 
+    // if (map[13]) {
+    //     restart_game();
+    // }
+
 }
 
 function getShot(e) {
@@ -72,6 +87,13 @@ function getShot(e) {
 
             break;
         case 13: //Enter
+            restart_game();
             break;
+    }
+}
+
+function check_lose() {
+    if (vida <= 0) {
+        screen = 1;
     }
 }

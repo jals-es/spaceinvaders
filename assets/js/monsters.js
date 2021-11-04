@@ -133,14 +133,14 @@ function print_monsters() {
         if (count_seccond > 65) {
             count_seccond = 0
             for (let index = 0; index < (Math.floor(Math.random() * (6 - 3) + 3)); index++) {
-                enemy_shot(boss,parseInt(Math.random() * (15 - 5) + 5),Math.floor(Math.random() * (3 - -3) + -3))
-                
+                enemy_shot(boss, parseInt(Math.random() * (15 - 5) + 5), Math.floor(Math.random() * (3 - -3) + -3))
+
             }
             // enemy_shot(boss,parseInt(Math.random() * (15 - 5) + 5),Math.floor(Math.random() * (3 - -3) + -3))
             // enemy_shot(boss,parseInt(Math.random() * (15 - 5) + 5),Math.floor(Math.random() * (3 - -3) + -3))
 
         }
-    
+
     }
 
 }
@@ -336,9 +336,10 @@ function check() {
                 check_baja = false;
             }
         } else if (m01_positions[m01_positions.length - 1].y >= n_y) {
-            alert("DERROTA")
-            location.reload();
-            baja(-m01_positions[m01_positions.length - 1].y)
+            // alert("DERROTA")
+            // location.reload();
+            // baja(-m01_positions[m01_positions.length - 1].y)
+            screen = 1;
         }
     }
 
@@ -357,9 +358,10 @@ function check() {
                 check_baja = false;
             }
         } else if (m02_positions[m02_positions.length - 1].y >= n_y) {
-            alert("DERROTA")
-            location.reload();
-            baja(-m01_positions[m01_positions.length - 1].y)
+            // alert("DERROTA")
+            // location.reload();
+            // baja(-m01_positions[m01_positions.length - 1].y)
+            screen = 1;
         }
     }
 
@@ -378,9 +380,10 @@ function check() {
                 check_baja = false;
             }
         } else if (m03_positions[m03_positions.length - 1].y >= n_y) {
-            alert("DERROTA")
-            location.reload();
-            baja(-m01_positions[m01_positions.length - 1].y)
+            // alert("DERROTA")
+            // location.reload();
+            // baja(-m01_positions[m01_positions.length - 1].y)
+            screen = 1;
         }
     }
 
