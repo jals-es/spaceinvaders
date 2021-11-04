@@ -17,9 +17,10 @@ function move_monsterFalling(monsterFallingActual) {
 function check_monsterFalling(monsterFallingActual) {
     if (isBetweenMonsterFallingActual(monsterFallingActual)) {
         vida--
-        var elementPos = monsterFalling.map(function (x) {
-            return x.uuid;
-        }).indexOf(monsterFalling.uuid);
+        monsterFalling = []
+        // var elementPos = monsterFalling.map(function (x) {
+        //     return x.uuid;
+        // }).indexOf(monsterFalling.uuid);
         monsterFalling.splice(elementPos, 1)
     }
 }
