@@ -94,6 +94,7 @@ function check_shot(shot) {
     if (!boss_show) {
         for (let index = 0; index < m01_positions.length; index++) {
             if (isBetween(shot, m01_positions[index])) {
+                monsterFalling.push(m01_positions[index])
                 bangs.push({
                     x: m01_positions[index].x,
                     y: m01_positions[index].y,
@@ -106,6 +107,7 @@ function check_shot(shot) {
         }
         for (let index = 0; index < m02_positions.length; index++) {
             if (isBetween(shot, m02_positions[index])) {
+                monsterFalling.push(m02_positions[index])
                 bangs.push({
                     x: m02_positions[index].x,
                     y: m02_positions[index].y,
@@ -119,6 +121,7 @@ function check_shot(shot) {
         }
         for (let index = 0; index < m03_positions.length; index++) {
             if (isBetween(shot, m03_positions[index])) {
+                monsterFalling.push(m03_positions[index])
                 bangs.push({
                     x: m03_positions[index].x,
                     y: m03_positions[index].y,

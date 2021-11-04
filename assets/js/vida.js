@@ -17,7 +17,7 @@ function print_vida() {
     if (vida > 2) {
         vides = []
     } else {
-        if (10 == Math.floor(Math.random() * (100 - 1 + 1) + 1)) {
+        if (10 == Math.floor(Math.random() * (1500 - 1 + 1) + 1)) {
             vides.push(new Vida(Math.floor(Math.random() * (canvas.width - 0 + 1) + 0)))
         }
     }
@@ -33,7 +33,6 @@ function move_vida(vidaactual) {
         check_vida(vidaactual);
         ctx.drawImage(image_vida, vidaactual.x, vidaactual.y);
     }
-    // return shot;
 }
 
 function check_vida(vidaactual) {
@@ -61,7 +60,7 @@ function isBetweenVida(vidaactual) {
     vidayfinal = vidaactual.y + vidaactual.image.height
     // console.log(navexstart + " " + vidaxstart + " " + navexfinal);
     if ((navexstart < vidaxstart && vidaxstart < navexfinal) || (navexstart < vidaxfinal && vidaxfinal < navexfinal)) {
-        console.log("Nx: " + navexstart + " Ny: " + n_y + " Vxs: " + vidaxstart + " Vxf: " + vidaxfinal);
+        // console.log("Nx: " + navexstart + " Ny: " + n_y + " Vxs: " + vidaxstart + " Vxf: " + vidaxfinal);
         if (n_y < vidayfinal) {
             return true
         }

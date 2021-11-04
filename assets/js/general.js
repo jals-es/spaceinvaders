@@ -3,17 +3,24 @@ const canvas = document.getElementById("principal");
 const ctx = canvas.getContext('2d');
 canvas.width = screen.width;
 canvas.height = screen.height;
+// ctx.fillStyle = "blue";
+
 
 var score = 0;
 var vidas = "";
 
 function printAll() {
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     ctx.font = "50px DotsAllForNow";
+    print_monsterFalling();
+
     print_score();
     print_monsters();
     print_nave();
     print_shot();
+    
     print_vida();
 }
 
