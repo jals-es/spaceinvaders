@@ -159,8 +159,12 @@ function print_boss() {
 
     boss_bar = (500 * live_boss) / full_live_boss;
 
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
     ctx.fillRect((canvas.width / 2) - 255, 5, 510, 60);
+    ctx.stroke();
+
+    ctx.fillStyle = "black";
+    ctx.fillRect((canvas.width / 2) - 250, 10, 500, 50);
     ctx.stroke();
 
     if (boss_bar < (500 / 4)) {
@@ -172,11 +176,13 @@ function print_boss() {
     } else {
         ctx.fillStyle = "green";
     }
+
+
     ctx.fillRect((canvas.width / 2) - 250, 10, boss_bar, 50);
     ctx.stroke();
 
     if (boss_bar <= 0) {
-        alert("YOU WIN");
+        screen = 2;
     }
 
     ctx.drawImage(boss.image, boss.x, boss.y);
@@ -191,8 +197,6 @@ function check_boss_position() {
 
     var h = Math.random() < 0.5 ? -1 : 1;
     rand_vel = (Math.random() * (2 - 1) + 1);
-
-    // console.log(dx_b + " -- " + dy_b);
 
     if (boss.x < 0) {
         dx_b = dx_b * -1;
