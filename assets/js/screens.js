@@ -56,6 +56,8 @@ function print_lose() {
 
     ctx.fillText("Press enter to restart", x_press_start_font, (canvas.height / 2) + 250);
 
+    send_score();
+
 }
 
 function print_win() {
@@ -103,9 +105,35 @@ function print_win() {
     ctx.font = press_start_font + "px DotsAllForNow";
 
     ctx.fillText("Press enter to restart", x_press_start_font, (canvas.height / 2) + 250);
+
+    send_score();
 }
 
 function restart_game() {
     console.log("restart")
     location.reload();
+}
+
+function send_score() {
+    var token = localStorage.getItem("token");
+    if (token) {
+        var http = new XMLHttpRequest();
+        var url = 'http://0.0.0.0:4000/api/rank/update';
+        var params = JSON.stringify({
+            nameGame: "spaceinvaders_anja",
+            score: score
+        });
+        http.open('POST', url, true);
+
+        //Send the proper header information along with the request
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        http.setRequestHeader('Authorization', 'Token ' + token);
+
+        http.onreadystatechange = function() { //Call a function when the state changes.
+            if (http.readyState == 4 && http.status == 200) {
+                console.log(http.responseText);
+            }
+        }
+        http.send(params);
+    }
 }

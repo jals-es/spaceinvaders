@@ -136,7 +136,11 @@ function check_shot(shot) {
     } else {
         if (isBetween(shot, boss)) {
             shots = []
-            score += 50
+            if (score >= 3500) {
+                score += 100
+            } else {
+                score += 50
+            }
             live_boss--
         }
     }

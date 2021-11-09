@@ -146,10 +146,13 @@ function print_monsters() {
 }
 
 function matar_all() {
-    boss_show = true;
-    m01_positions = [];
-    m02_positions = [];
-    m03_positions = [];
+    if (!production) {
+        boss_show = true;
+        score = 1750;
+        m01_positions = [];
+        m02_positions = [];
+        m03_positions = [];
+    }
 }
 
 function print_boss() {

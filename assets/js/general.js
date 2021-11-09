@@ -10,6 +10,7 @@ var score = 0;
 var vidas = "";
 
 var screen = 0;
+var production = true;
 
 function printAll() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -88,6 +89,12 @@ function getShot(e) {
             break;
         case 13: //Enter
             restart_game();
+            break;
+
+        case 75:
+            if (!production) {
+                matar_all();
+            }
             break;
     }
 }
